@@ -26,3 +26,17 @@ npm run build
 npm run preview
 ```
 
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- CSS custom properties for theming
+
+
+
+
+
+
+
+
