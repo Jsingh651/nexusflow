@@ -18,3 +18,23 @@ export default function App() {
     total: board.tasks.length,
     done: board.tasks.filter((t) => t.columnId === 'done').length,
     active: board.tasks.filter((t) => t.columnId === 'in-progress').length,
+  };
+
+  return (
+    <div className={`app ${darkMode ? 'dark' : 'light'}`}>
+      <header className="header">
+        <div className="brand">
+          <span className="brand-icon">⬡</span>
+          <div>
+            <h1>NexusFlow</h1>
+            <p className="tagline">Project workflow, simplified</p>
+          </div>
+        </div>
+        <div className="header-actions">
+          <div className="stats">
+            <span>{stats.total} tasks</span>
+            <span className="divider">·</span>
+            <span>{stats.active} active</span>
+            <span className="divider">·</span>
+            <span>{stats.done} done</span>
+          </div>
