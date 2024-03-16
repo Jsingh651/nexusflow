@@ -58,3 +58,23 @@ export default function App() {
         <TaskModal onClose={() => setModalOpen(false)} onSubmit={handleAdd} />
       )}
     </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
