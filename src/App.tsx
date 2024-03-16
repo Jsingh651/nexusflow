@@ -38,3 +38,23 @@ export default function App() {
             <span className="divider">·</span>
             <span>{stats.done} done</span>
           </div>
+          <button className="btn-icon" onClick={() => setDarkMode(!darkMode)} title="Toggle theme">
+            {darkMode ? '☀' : '☾'}
+          </button>
+          <button className="btn-primary" onClick={() => setModalOpen(true)}>
+            + New Task
+          </button>
+        </div>
+      </header>
+
+      <Board
+        columns={board.columns}
+        tasks={board.tasks}
+        onMove={board.moveTask}
+        onDelete={board.deleteTask}
+      />
+
+      {modalOpen && (
+        <TaskModal onClose={() => setModalOpen(false)} onSubmit={handleAdd} />
+      )}
+    </div>
