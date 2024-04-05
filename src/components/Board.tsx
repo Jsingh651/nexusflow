@@ -22,3 +22,15 @@ export default function Board({ columns, tasks, onMove, onDelete }: BoardProps) 
       ))}
     </div>
   );
+}
+
+
+
+
+
+
+
+
+
+
+
