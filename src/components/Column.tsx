@@ -11,3 +11,16 @@ interface ColumnProps {
 
 export default function Column({ column, tasks, onMove, onDelete }: ColumnProps) {
   const [dragOver, setDragOver] = useState(false);
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const taskId = e.dataTransfer.getData('text/plain');
+    if (taskId) onMove(taskId, column.id);
+  };
+
+  return (
+    <div
+      className={`column ${dragOver ? 'drag-over' : ''}`}
+      onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+      onDragLeave={() => setDragOver(false)}
