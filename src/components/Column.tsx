@@ -37,3 +37,16 @@ export default function Column({ column, tasks, onMove, onDelete }: ColumnProps)
         ))}
       </div>
     </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
