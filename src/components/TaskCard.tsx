@@ -24,3 +24,16 @@ export default function TaskCard({ task, onDelete }: TaskCardProps) {
           className="priority-badge"
           style={{ background: PRIORITY_COLORS[task.priority] }}
         >
+          {task.priority}
+        </span>
+        <button className="btn-delete" onClick={() => onDelete(task.id)} title="Delete">
+          ×
+        </button>
+      </div>
+      <h3>{task.title}</h3>
+      {task.description && <p>{task.description}</p>}
+    </div>
+  );
+}
+
+
