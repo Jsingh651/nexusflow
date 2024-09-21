@@ -58,3 +58,23 @@ export default function TaskModal({ onClose, onSubmit }: TaskModalProps) {
                 <option value="review">Review</option>
                 <option value="done">Done</option>
               </select>
+            </label>
+          </div>
+          <div className="modal-actions">
+            <button type="button" className="btn-secondary" onClick={onClose}>Cancel</button>
+            <button type="submit" className="btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
