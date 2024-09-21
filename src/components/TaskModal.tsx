@@ -38,3 +38,23 @@ export default function TaskModal({ onClose, onSubmit }: TaskModalProps) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Optional details..."
+              rows={3}
+            />
+          </label>
+          <div className="form-row">
+            <label>
+              Priority
+              <select value={priority} onChange={(e) => setPriority(e.target.value as Priority)}>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+            <label>
+              Column
+              <select value={column} onChange={(e) => setColumn(e.target.value as ColumnId)}>
+                <option value="backlog">Backlog</option>
+                <option value="in-progress">In Progress</option>
+                <option value="review">Review</option>
+                <option value="done">Done</option>
+              </select>
