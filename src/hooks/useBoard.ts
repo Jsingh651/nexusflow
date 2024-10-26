@@ -27,3 +27,32 @@ const SEED_TASKS: Task[] = [
     columnId: 'in-progress',
     priority: 'high',
     createdAt: Date.now() - 86400000 * 2,
+  },
+  {
+    id: uuid(),
+    title: 'Write unit tests',
+    description: 'Cover core board logic and hooks',
+    columnId: 'backlog',
+    priority: 'medium',
+    createdAt: Date.now() - 86400000,
+  },
+];
+
+function loadState(): BoardState {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {
+    /* use defaults */
+  }
+  return { tasks: SEED_TASKS, columns: DEFAULT_COLUMNS };
+}
+
+function saveState(state: BoardState) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+export function useBoard() {
+  const [state, setState] = useState<BoardState>(loadState);
+
+  useEffect(() => {
