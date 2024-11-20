@@ -85,3 +85,32 @@ export function useBoard() {
     setState((s) => ({ ...s, tasks: s.tasks.filter((t) => t.id !== taskId) }));
   }, []);
 
+  const updateTask = useCallback(
+    (taskId: string, updates: Partial<Pick<Task, 'title' | 'description' | 'priority'>>) => {
+      setState((s) => ({
+        ...s,
+        tasks: s.tasks.map((t) => (t.id === taskId ? { ...t, ...updates } : t)),
+      }));
+    },
+    []
+  );
+
+  return { ...state, addTask, moveTask, deleteTask, updateTask };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
