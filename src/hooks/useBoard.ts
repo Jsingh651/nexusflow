@@ -56,3 +56,32 @@ export function useBoard() {
   const [state, setState] = useState<BoardState>(loadState);
 
   useEffect(() => {
+    saveState(state);
+  }, [state]);
+
+  const addTask = useCallback(
+    (title: string, description: string, priority: Priority, columnId: ColumnId) => {
+      const task: Task = {
+        id: uuid(),
+        title,
+        description,
+        columnId,
+        priority,
+        createdAt: Date.now(),
+      };
+      setState((s) => ({ ...s, tasks: [...s.tasks, task] }));
+    },
+    []
+  );
+
+  const moveTask = useCallback((taskId: string, columnId: ColumnId) => {
+    setState((s) => ({
+      ...s,
+      tasks: s.tasks.map((t) => (t.id === taskId ? { ...t, columnId } : t)),
+    }));
+  }, []);
+
+  const deleteTask = useCallback((taskId: string) => {
+    setState((s) => ({ ...s, tasks: s.tasks.filter((t) => t.id !== taskId) }));
+  }, []);
+
